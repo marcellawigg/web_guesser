@@ -17,9 +17,9 @@ end
     if guess.nil?
       "Make a guess"
     elsif guess > number
-      "Too high!"
+      guess > number + 5 ? "Way too high!" : "Too high!"
     elsif guess < number
-      "Too low!"
+      guess < number - 5 ? "Way too low!" : "Too low!"
     elsif guess == number
       "You got it right!"
     end
