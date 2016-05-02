@@ -2,25 +2,25 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 set :port, 8888
-number ||= rand(101)
+NUMBER = rand(101)
 
 
 get '/' do
   guess = params["guess"]
-  response = check(guess, number)
-  erb :index, :locals => {:number => number, :guess => guess, :response => response}
+  response = check(guess)
+  erb :index, :locals => {:number => NUMBER, :guess => guess, :response => response}
 end
 
 
-  def check(guess, number)
+  def check(guess)
     guess = guess.to_i unless guess.nil?
     if guess.nil?
       "Make a guess"
-    elsif guess > number
-      guess > number + 5 ? "Way too high!" : "Too high!"
-    elsif guess < number
-      guess < number - 5 ? "Way too low!" : "Too low!"
-    elsif guess == number
+    elsif guess > NUMBER
+      guess > NUMBER + 5 ? "Way too high!" : "Too high!"
+    elsif guess < NUMBER
+      guess < NUMBER - 5 ? "Way too low!" : "Too low!"
+    elsif guess == NUMBER
       "You got it right!"
     end
   end
